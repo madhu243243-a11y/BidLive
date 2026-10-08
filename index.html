@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BidLive — Online Auction Marketplace</title>
+  <meta name="description" content="Explore BidLive auctions, create a buyer or seller account, and place bids stored in the auction database." />
+
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar (Dark Modern) -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="main-logo">
+        <div class="logo-icon">⚖️</div>
+        <span>BidLive<span class="live-dot"></span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="auctions.html" class="nav-link">Live Auctions</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+
+      <!-- Desktop Actions / User State -->
+      <div class="nav-actions">
+        <!-- Rendered dynamically by js/main.js -->
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="register.html" class="btn btn-nav-outline">Register</a>
+        <a href="create-auction.html" class="btn btn-sell">Start Selling</a>
+      </div>
+
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="auctions.html" class="nav-link">Live Auctions</a>
+      <a href="#categories" class="nav-link">Categories</a>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#about" class="nav-link">About</a>
+      <div class="mobile-nav-actions">
+        <!-- Populated by js/main.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="section-tag">🔥 Live Online Auctions</div>
+        <h1 class="hero-headline">
+          Bid Live. <br />
+          <span class="highlight">Win More.</span>
+        </h1>
+        <p class="hero-subheading">
+          Browse database-backed auction listings, place bids, and follow live countdowns.
+        </p>
+
+        <div class="hero-actions">
+          <a href="auctions.html" class="btn btn-primary btn-lg">Explore Live Auctions</a>
+          <a href="create-auction.html" class="btn btn-secondary btn-lg">Start Selling</a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="trust-item">
+            <span class="trust-number">Open</span>
+            <span class="trust-label">Auction<br />Listings</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-number">Planned</span>
+            <span class="trust-label">Seller verification</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-number">MySQL</span>
+            <span class="trust-label">Database<br />Backed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card Showcase -->
+      <div class="hero-visual">
+        <div class="hero-card-preview">
+          <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80" alt="Sony Headphones Hero Auction" class="hero-preview-img" />
+          
+          <div class="hero-floating-chip">
+            <div class="floating-chip-avatar">M</div>
+            <div>
+              <div style="font-size: 0.75rem; color: #94a3b8;">BidLive Auctions</div>
+              <div style="font-weight: 800; font-size: 1.1rem; color: #ffffff;">Discover your next lot</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Auctions Section -->
+  <section class="auctions-section">
+    <div class="container">
+      <div class="section-header between">
+        <div>
+          <span class="section-tag">Ending Soon</span>
+          <h2 class="section-title">Live Auctions</h2>
+          <p class="section-subtitle">Browse current gadget, collectible, and fashion listings.</p>
+        </div>
+        <a href="auctions.html" class="btn btn-secondary">View All Active Auctions →</a>
+      </div>
+
+      <!-- Sample Products Grid -->
+      <div class="auctions-grid" id="live-auctions-grid">
+        <!-- Rendered dynamically by js/auctions.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Browse Collections</span>
+        <h2 class="section-title">Explore by Category</h2>
+        <p class="section-subtitle">Browse listings by category. Counts reflect active auctions in BidLive.</p>
+      </div>
+
+      <div class="categories-grid" id="categories-grid">
+        <!-- Rendered dynamically by js/auctions.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Simple 4-Step Process</span>
+        <h2 class="section-title">How BidLive Works</h2>
+        <p class="section-subtitle">Create an account, browse database-backed lots, and place a bid.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number-badge">1</div>
+          <div class="step-icon-wrap">👤</div>
+          <h3>Create an Account</h3>
+          <p>Register as a buyer or seller. Passwords are hashed by the backend; identity verification is not available yet.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number-badge">2</div>
+          <div class="step-icon-wrap">🔍</div>
+          <h3>Find an Auction</h3>
+          <p>Browse auction listings, follow countdown timers, review product details, and view stored bid histories.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number-badge">3</div>
+          <div class="step-icon-wrap">⚡</div>
+          <h3>Place Your Bid</h3>
+          <p>Enter a bid or use quick increments. Bid updates are saved by the backend; push notifications are not available yet.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number-badge">4</div>
+          <div class="step-icon-wrap">🏆</div>
+          <h3>Win the Auction</h3>
+          <p>The highest bid when an auction ends determines the result. Payment and fulfillment are not available yet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Auctions Banner Section -->
+  <section class="featured-section">
+    <div class="container">
+      <div class="section-header between">
+        <div>
+          <span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">Curated Picks</span>
+          <h2 class="section-title">Featured Auctions</h2>
+          <p class="section-subtitle">Popular lots selected by their current bid counts.</p>
+        </div>
+        <a href="auctions.html" class="btn btn-accent">Explore All →</a>
+      </div>
+
+      <div class="auctions-grid" id="featured-auctions-grid">
+        <!-- Rendered dynamically by js/auctions.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section style="padding: 5rem 0; background: #ffffff;" id="about">
+    <div class="container">
+      <div class="hero-grid" style="align-items: center;">
+        <div>
+          <span class="section-tag">About BidLive</span>
+          <h2 class="section-title">About BidLive</h2>
+          <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
+            BidLive stores account, auction, bid, and watchlist data in MySQL. A near-end bid extends the auction end time; seller verification and buyer protection are planned for a later release.
+          </p>
+          <div class="about-feature-list">
+            <div>
+              <h3 style="color: var(--primary); font-size: 1.8rem; font-weight: 800;">Planned</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Authenticity checks not connected</p>
+            </div>
+            <div>
+              <h3 style="color: var(--accent-amber); font-size: 1.8rem; font-weight: 800;">Backend</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Accounts, lots & bids</p>
+            </div>
+            <div>
+              <h3 style="color: var(--success); font-size: 1.8rem; font-weight: 800;">Planned</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Payments need backend integration</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="BidLive Community" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-lg);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon">⚖️</div>
+            <span>BidLive</span>
+          </a>
+          <p>
+            BidLive hosts electronics, collectibles, watches, fashion, and other auction listings.
+          </p>
+          <div class="social-links">
+            <span class="social-btn" aria-hidden="true" title="Social links are not connected in this demo">𝕏</span>
+            <span class="social-btn" aria-hidden="true" title="Social links are not connected in this demo">in</span>
+            <span class="social-btn" aria-hidden="true" title="Social links are not connected in this demo">📸</span>
+            <span class="social-btn" aria-hidden="true" title="Social links are not connected in this demo">▶</span>
+          </div>
+          <span class="footer-demo-link">Social channels are not connected in this demo.</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="auctions.html">Live Auctions</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="create-auction.html">Start Selling</a></li>
+            <li><a href="buyer-dashboard.html">Buyer Dashboard</a></li>
+            <li><a href="seller-dashboard.html">Seller Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="auctions.html?category=Electronics">Electronics</a></li>
+            <li><a href="auctions.html?category=Mobiles">Mobiles</a></li>
+            <li><a href="auctions.html?category=Laptops">Laptops</a></li>
+            <li><a href="auctions.html?category=Watches">Luxury Watches</a></li>
+            <li><a href="auctions.html?category=Collectibles">Collectibles</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Help & Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:support@bidlive.in?subject=BidLive%20Help">Help & Contact</a></li>
+            <li><span class="footer-demo-link">Bidding Rules (demo)</span></li>
+            <li><span class="footer-demo-link">Buyer Protection (planned)</span></li>
+            <li><span class="footer-demo-link">Seller Guidelines (demo)</span></li>
+            <li><a href="mailto:support@bidlive.in">support@bidlive.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 BidLive Platform Inc. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <span class="footer-demo-link">Privacy Policy (demo)</span>
+          <span class="footer-demo-link">Terms of Service (demo)</span>
+          <span class="footer-demo-link">Security (demo)</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Modules -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js?v=step4"></script>
+  <script src="js/auctions.js"></script>
+</body>
+</html>

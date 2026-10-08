@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create New Auction — BidLive</title>
+  <meta name="description" content="List a new product for live auction on BidLive. Set your starting price, auction duration, and reach thousands of bidders." />
+
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">⚖️</div>
+        <span>BidLive<span class="live-dot"></span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="auctions.html" class="nav-link">Live Auctions</a>
+        <a href="seller-dashboard.html" class="nav-link">Seller Dashboard</a>
+        <a href="create-auction.html" class="nav-link active">Start Selling</a>
+        <a href="index.html#about" class="nav-link">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Rendered dynamically by js/main.js -->
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="register.html" class="btn btn-nav-outline">Register</a>
+        <a href="create-auction.html" class="btn btn-sell">Start Selling</a>
+      </div>
+
+      <button class="hamburger-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="auctions.html" class="nav-link">Live Auctions</a>
+      <a href="seller-dashboard.html" class="nav-link">Seller Dashboard</a>
+      <a href="create-auction.html" class="nav-link active">Start Selling</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <div class="mobile-nav-actions"></div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Bar -->
+  <div style="background: #ffffff; border-bottom: 1px solid var(--border-light); padding: 0.85rem 0;">
+    <div class="container">
+      <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="seller-dashboard.html">Seller Dashboard</a>
+        <span>/</span>
+        <span style="color: var(--text-main); font-weight: 600;">Create Auction Lot</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Auction Section -->
+  <main style="padding: 3rem 0 5rem;">
+    <div class="container">
+
+      <!-- Header -->
+      <div style="margin-bottom: 2.5rem;">
+        <span class="section-tag">Seller Portal</span>
+        <h1 style="font-size: 2.25rem; margin-top: 0.35rem;">List a New Auction Lot</h1>
+        <p style="color: var(--text-muted); font-size: 1rem; margin-top: 0.25rem;">
+          Create a listing that is saved to the BidLive database.
+        </p>
+      </div>
+
+      <div class="create-auction-grid">
+        
+        <!-- Left: Form Card -->
+        <div class="dash-content-card">
+          <h3 style="font-size: 1.35rem; margin-bottom: 1.5rem;">Product & Auction Information</h3>
+
+          <form id="create-auction-form" novalidate>
+            
+            <div class="form-group">
+              <label for="auction-title" class="form-label">Product Title *</label>
+              <input
+                type="text"
+                id="auction-title"
+                class="form-control"
+                placeholder="e.g. Sony WH-1000XM5 Wireless Headphones (Sealed Box)"
+                required
+              />
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">
+                Include brand, model, and key differentiator.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="auction-category" class="form-label">Category *</label>
+              <select id="auction-category" class="form-control" required>
+                <option value="">Select Category</option>
+                <option value="Electronics" selected>Electronics</option>
+                <option value="Mobiles">Mobiles & Smartphones</option>
+                <option value="Laptops">Laptops & Computers</option>
+                <option value="Fashion">Fashion & Sneakers</option>
+                <option value="Watches">Luxury Watches</option>
+                <option value="Cameras">Cameras & Optics</option>
+                <option value="Vehicles">Automobiles & Superbikes</option>
+                <option value="Collectibles">Rare Collectibles & Art</option>
+              </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+              <div class="form-group">
+                <label for="auction-price" class="form-label">Starting Price (₹) *</label>
+                <input
+                  type="number"
+                  id="auction-price"
+                  class="form-control"
+                  placeholder="e.g. 5000"
+                  min="1"
+                  step="50"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="auction-duration" class="form-label">Auction Duration *</label>
+                <select id="auction-duration" class="form-control" required>
+                  <option value="1">1 Hour (Flash Auction)</option>
+                  <option value="3">3 Hours</option>
+                  <option value="6">6 Hours</option>
+                  <option value="12">12 Hours</option>
+                  <option value="24" selected>24 Hours (1 Day)</option>
+                  <option value="48">48 Hours (2 Days)</option>
+                  <option value="72">72 Hours (3 Days)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="auction-image" class="form-label">Product Image URL</label>
+              <input
+                type="url"
+                id="auction-image"
+                class="form-control"
+                placeholder="https://images.unsplash.com/..."
+              />
+              <div style="margin-top: 0.65rem;">
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Or quick select a sample image:</span>
+                <div style="margin-top: 0.4rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <button type="button" class="preset-img-btn btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.65rem;" data-url="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80">🎧 Headphones</button>
+                  <button type="button" class="preset-img-btn btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.65rem;" data-url="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80">📱 iPhone</button>
+                  <button type="button" class="preset-img-btn btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.65rem;" data-url="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80">💻 MacBook</button>
+                  <button type="button" class="preset-img-btn btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.65rem;" data-url="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80">⌚ Rolex Watch</button>
+                  <button type="button" class="preset-img-btn btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.65rem;" data-url="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80">👟 Jordans</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="auction-desc" class="form-label">Detailed Description *</label>
+              <textarea
+                id="auction-desc"
+                class="form-control"
+                rows="5"
+                placeholder="Include specifications, condition (Brand New / Refurbished), included accessories, warranty details, and seller notes..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-sell btn-lg btn-block" style="margin-top: 1.5rem; font-size: 1.05rem;">
+              🚀 Launch Live Auction Lot
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: Live Interactive Card Preview -->
+        <div class="live-preview-box">
+          <h4>Card Live Preview</h4>
+
+          <div class="auction-card" style="margin-top: 0;">
+            <div class="card-img-wrapper">
+              <img
+                id="prev-image"
+                src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80"
+                alt="Product Preview"
+                class="card-img"
+              />
+              <div class="card-badge badge-live">
+                <span class="pulse-circle"></span> LIVE
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="card-category" id="prev-category">Electronics</div>
+              <h3 class="card-title" id="prev-title">Your Product Title</h3>
+
+              <div class="price-summary-card">
+                <div class="price-box">
+                  <div class="price-label">Starting Price</div>
+                  <div class="price-val" id="prev-price">₹0</div>
+                </div>
+                <div class="price-box" style="text-align: right;">
+                  <div class="price-label">Live Bids</div>
+                  <div class="price-val" style="color: var(--primary);">0 Bids</div>
+                </div>
+              </div>
+
+              <div class="card-timer-banner">
+                <div class="timer-dot"></div>
+                <div class="timer-digits">⏱️ Active Now</div>
+              </div>
+
+              <button type="button" class="btn btn-primary btn-block" style="margin-top: 1rem; pointer-events: none; opacity: 0.85;">
+                Previewing Card
+              </button>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; padding: 1.25rem; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+            <strong style="color: var(--text-main); display: block; margin-bottom: 0.35rem;">💡 Seller Tip:</strong>
+            Setting a realistic opening price encourages bidding momentum. High-resolution imagery typically increases bid frequency by 45%.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 BidLive Platform Inc. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="index.html" style="color: var(--nav-muted);">Home</a>
+          <a href="auctions.html" style="color: var(--nav-muted);">Live Auctions</a>
+          <a href="seller-dashboard.html" style="color: var(--nav-muted);">Seller Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js?v=step4"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

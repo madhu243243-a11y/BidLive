@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create an Account — BidLive</title>
+  <meta name="description" content="Sign up for BidLive to start bidding on live lots or list your own items for auction." />
+
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">⚖️</div>
+        <span>BidLive<span class="live-dot"></span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="auctions.html" class="nav-link">Live Auctions</a>
+        <a href="index.html#categories" class="nav-link">Categories</a>
+        <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+        <a href="index.html#about" class="nav-link">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Rendered dynamically by js/main.js -->
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="register.html" class="btn btn-nav-outline active">Register</a>
+        <a href="create-auction.html" class="btn btn-sell">Start Selling</a>
+      </div>
+
+      <button class="hamburger-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="auctions.html" class="nav-link">Live Auctions</a>
+      <a href="index.html#categories" class="nav-link">Categories</a>
+      <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <div class="mobile-nav-actions"></div>
+    </div>
+  </header>
+
+  <!-- Register Main Section -->
+  <main class="auth-page-section">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="logo-icon" style="font-size: 2.25rem; margin-bottom: 0.5rem; display: inline-block;">⚖️</div>
+        <h2>Create an Account</h2>
+        <p>Create a BidLive buyer or seller account</p>
+        <p class="auth-demo-note">Your account is saved by the BidLive backend. Passwords are hashed on the server and are never stored in this browser.</p>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="register-form" novalidate>
+        <!-- Account Type Selector -->
+        <label class="form-label" style="margin-bottom: 0.5rem;">I want to register as a:</label>
+        <div class="role-select-grid">
+          <label class="role-option active" id="role-buyer-opt">
+            <input type="radio" name="account-type" value="buyer" checked />
+            <div>
+              <div style="font-weight: 700; font-size: 0.95rem;">🛒 Buyer</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Bid & win items</div>
+            </div>
+          </label>
+          <label class="role-option" id="role-seller-opt">
+            <input type="radio" name="account-type" value="seller" />
+            <div>
+              <div style="font-weight: 700; font-size: 0.95rem;">🏷️ Seller</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">List & sell lots</div>
+            </div>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-name" class="form-label">Full Name</label>
+          <input
+            type="text"
+            id="reg-name"
+            class="form-control"
+            placeholder="e.g. Rahul Sharma"
+            required
+            autocomplete="name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="reg-email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            id="reg-email"
+            class="form-control"
+            placeholder="e.g. rahul@example.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="reg-password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="reg-password"
+            class="form-control"
+            placeholder="At least 8 characters"
+            required
+            autocomplete="new-password"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="reg-confirm-password" class="form-label">Confirm Password</label>
+          <input
+            type="password"
+            id="reg-confirm-password"
+            class="form-control"
+            placeholder="Re-enter your password"
+            required
+            autocomplete="new-password"
+          />
+        </div>
+
+        <div class="form-group" style="margin-top: 0.5rem;">
+          <label class="form-checkbox-label" style="font-size: 0.825rem;">
+            <input type="checkbox" id="terms-agree" required />
+            <span>I acknowledge the demo terms. Privacy, payment, and bidding policies will be provided with backend integration.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">
+          Create My Account
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">
+        Already have an account? <a href="login.html" style="color: var(--primary); font-weight: 600;">Sign In</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 BidLive Platform Inc. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="index.html" style="color: var(--nav-muted);">Home</a>
+          <a href="auctions.html" style="color: var(--nav-muted);">Live Auctions</a>
+          <a href="login.html" style="color: var(--nav-muted);">Login</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js?v=step4"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

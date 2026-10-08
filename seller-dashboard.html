@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seller Dashboard — BidLive</title>
+  <meta name="description" content="Manage your listed auctions, track incoming live bids, and list new products on BidLive." />
+
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">⚖️</div>
+        <span>BidLive<span class="live-dot"></span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="auctions.html" class="nav-link">Live Auctions</a>
+        <a href="seller-dashboard.html" class="nav-link active">Seller Dashboard</a>
+        <a href="create-auction.html" class="nav-link">List New Item</a>
+        <a href="index.html#about" class="nav-link">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Rendered dynamically by js/main.js -->
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="register.html" class="btn btn-nav-outline">Register</a>
+        <a href="create-auction.html" class="btn btn-sell">Start Selling</a>
+      </div>
+
+      <button class="hamburger-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="auctions.html" class="nav-link">Live Auctions</a>
+      <a href="seller-dashboard.html" class="nav-link active">Seller Dashboard</a>
+      <a href="create-auction.html" class="nav-link">List New Item</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <div class="mobile-nav-actions"></div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Bar -->
+  <div style="background: #ffffff; border-bottom: 1px solid var(--border-light); padding: 0.85rem 0;">
+    <div class="container">
+      <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span style="color: var(--text-main); font-weight: 600;">Seller Dashboard</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seller Dashboard Section -->
+  <main class="dashboard-section" id="seller-dashboard-view">
+    <div class="container">
+
+      <!-- Header Row -->
+      <div class="dash-header-row">
+        <div>
+          <span class="section-tag">Merchant Hub</span>
+          <h1 style="font-size: 2.25rem; margin-top: 0.35rem;">
+            Seller Portal: <span id="seller-user-name" style="color: var(--primary);">SoundCraft Seller</span> 💼
+          </h1>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+            Monitor your catalog of live lots, participant bid volumes, and finalized auctions.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="create-auction.html" class="btn btn-sell btn-lg">
+            + List New Auction
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon indigo">📋</div>
+          <div>
+            <div class="stat-val" id="seller-stat-total">0</div>
+            <div class="stat-title">Total Lots Listed</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">⚡</div>
+          <div>
+            <div class="stat-val" id="seller-stat-active">0</div>
+            <div class="stat-title">Active Live Auctions</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon amber">🤝</div>
+          <div>
+            <div class="stat-val" id="seller-stat-completed">0</div>
+            <div class="stat-title">Closed Auctions</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon blue">📈</div>
+          <div>
+            <div class="stat-val" id="seller-stat-bids">0</div>
+            <div class="stat-title">Total Bids Received</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seller Listings Table Card -->
+      <div class="dash-content-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <h3 style="font-size: 1.35rem;">Your Auction Listings</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">All active and completed lots under your seller account.</p>
+          </div>
+          <a href="create-auction.html" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+            + Create New Lot
+          </a>
+        </div>
+
+        <div class="dash-table-wrap">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Item Details</th>
+                <th>Starting Price</th>
+                <th>Current Highest</th>
+                <th>Bids</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="seller-auctions-tbody">
+              <!-- Dynamically populated by js/dashboard.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 BidLive Platform Inc. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="index.html" style="color: var(--nav-muted);">Home</a>
+          <a href="auctions.html" style="color: var(--nav-muted);">Live Auctions</a>
+          <a href="create-auction.html" style="color: var(--nav-muted);">Create Auction</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js?v=step4"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auction Details — BidLive</title>
+  <meta name="description" content="Review auction details, countdown, and bid history on BidLive." />
+
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">⚖️</div>
+        <span>BidLive<span class="live-dot"></span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="auctions.html" class="nav-link active">Live Auctions</a>
+        <a href="index.html#categories" class="nav-link">Categories</a>
+        <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+        <a href="index.html#about" class="nav-link">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Rendered dynamically by js/main.js -->
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="register.html" class="btn btn-nav-outline">Register</a>
+        <a href="create-auction.html" class="btn btn-sell">Start Selling</a>
+      </div>
+
+      <button class="hamburger-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="auctions.html" class="nav-link active">Live Auctions</a>
+      <a href="index.html#categories" class="nav-link">Categories</a>
+      <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <div class="mobile-nav-actions"></div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Navigation -->
+  <div style="background: #ffffff; border-bottom: 1px solid var(--border-light); padding: 0.85rem 0;">
+    <div class="container">
+      <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="auctions.html">Live Auctions</a>
+        <span>/</span>
+        <span style="color: var(--text-main); font-weight: 600;" id="breadcrumb-current">Auction Details</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Auction Details Section -->
+  <main class="details-section" id="auction-details-container">
+    <div class="container details-grid">
+      
+      <!-- Left Column: Sticky Large Image Gallery & Seller Info -->
+      <div class="details-gallery">
+        <div class="details-main-img-box">
+          <img id="details-img" src="" alt="Auction Item" class="details-main-img" />
+          <div id="details-status-badge" class="card-badge badge-live" style="top: 18px; left: 18px;">
+            <span class="pulse-circle"></span> LIVE
+          </div>
+        </div>
+
+        <!-- Trust Badges Under Image -->
+        <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1rem; display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.5rem;">🛡️</span>
+            <div>
+              <div style="font-weight: 700; font-size: 0.85rem;">Buyer Protection</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Planned with backend integration</div>
+            </div>
+          </div>
+          <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1rem; display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.5rem;">✅</span>
+            <div>
+              <div style="font-weight: 700; font-size: 0.85rem;">Authenticity Checks (Planned)</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">No physical inspection performed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Product Meta, Pricing, Bid Form & History -->
+      <div class="details-info-box">
+        
+        <div class="details-badge-row">
+          <span class="section-tag" id="details-category">Category</span>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">
+            Seller: <strong id="details-seller" style="color: var(--text-main);">Loading…</strong>
+          </span>
+        </div>
+
+        <button type="button" id="details-watch-btn" class="btn btn-secondary" data-watchlist-id="" style="margin-top: 0.75rem;">☆ Save auction</button>
+
+        <h1 class="details-title" id="details-title">Loading Auction Details...</h1>
+
+        <p class="details-desc" id="details-desc">
+          Please wait while auction details and bid history load.
+        </p>
+
+        <!-- Live Countdown Strip -->
+        <div class="details-timer-card">
+          <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--danger);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Time Remaining</span>
+          </div>
+          <div id="details-timer-digits" class="timer-digits urgent" style="font-size: 1.15rem; padding: 0.35rem 0.85rem;">
+            00:00:00
+          </div>
+        </div>
+        <p class="demo-feature-note">A valid bid in the final 30 seconds extends the stored auction end time by 30 seconds.</p>
+        <p id="bid-realtime-status" class="demo-feature-note" role="status" aria-live="polite">Connecting to live bid updates…</p>
+
+        <!-- Price Summary Cards -->
+        <div class="price-summary-card">
+          <div class="price-item">
+            <div class="p-label">Starting Price</div>
+            <div class="p-val" id="details-start-price">₹0</div>
+          </div>
+          <div class="price-item">
+            <div class="p-label">Current Highest Bid</div>
+            <div class="p-val highlight" id="details-current-bid">₹0</div>
+          </div>
+        </div>
+
+        <!-- Bidding Panel -->
+        <div class="bidding-action-panel">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.75rem;">
+            <div style="font-weight: 700; font-size: 1rem;">Place Your Bid</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              Minimum Next Bid: <strong id="details-min-bid" style="color: var(--primary);">₹0</strong>
+            </div>
+          </div>
+
+          <!-- Fast Increment Chips -->
+          <div class="quick-chips-label">Quick Add Increments:</div>
+          <div class="quick-chips-row" id="quick-chips-row">
+            <button type="button" class="chip-btn" data-add="100">+ ₹100</button>
+            <button type="button" class="chip-btn" data-add="500">+ ₹500</button>
+            <button type="button" class="chip-btn" data-add="1000">+ ₹1,000</button>
+            <button type="button" class="chip-btn" data-add="5000">+ ₹5,000</button>
+          </div>
+
+          <!-- Bidding Form -->
+          <form id="place-bid-form" novalidate>
+            <div class="bid-input-group">
+              <div class="bid-input-wrap">
+                <span class="currency-symbol">₹</span>
+                <input type="number" id="bid-amount-input" aria-label="Bid amount" step="50" required placeholder="Enter bid amount" />
+              </div>
+              <button type="submit" id="place-bid-btn" class="btn btn-primary btn-lg">
+                ⚡ Place Bid
+              </button>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
+              * Bids are stored in BidLive. No purchase or payment is created.
+            </div>
+          </form>
+        </div>
+
+        <!-- Bid History Feed -->
+        <div class="bid-history-panel">
+          <h4>
+            <span>Bid History</span>
+            <span class="bid-count-pill" id="details-bids-count">0 Bids</span>
+          </h4>
+
+          <div class="history-list" id="bid-history-list">
+            <!-- Dynamically populated by js/bidding.js -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 BidLive Platform Inc. All rights reserved.</div>
+        <div>
+          <a href="auctions.html" style="color: var(--nav-muted);">← Back to All Auctions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js?v=step4"></script>
+  <script src="js/realtime.js"></script>
+  <script src="js/bidding.js?v=step4"></script>
+</body>
+</html>

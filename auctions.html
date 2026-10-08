@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Auctions — Browse & Bid | BidLive</title>
+  <meta name="description" content="Explore BidLive auctions. Search, filter, sort, and place bids stored in the BidLive database." />
+
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">⚖️</div>
+        <span>BidLive<span class="live-dot"></span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="auctions.html" class="nav-link active">Live Auctions</a>
+        <a href="index.html#categories" class="nav-link">Categories</a>
+        <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+        <a href="index.html#about" class="nav-link">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Rendered dynamically by js/main.js -->
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="register.html" class="btn btn-nav-outline">Register</a>
+        <a href="create-auction.html" class="btn btn-sell">Start Selling</a>
+      </div>
+
+      <button class="hamburger-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="auctions.html" class="nav-link active">Live Auctions</a>
+      <a href="index.html#categories" class="nav-link">Categories</a>
+      <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <div class="mobile-nav-actions"></div>
+    </div>
+  </header>
+
+  <!-- Auctions Directory Header -->
+  <section style="background: #ffffff; padding: 2.5rem 0 1.5rem; border-bottom: 1px solid var(--border-light);">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="section-tag">Active Marketplace</span>
+          <h1 style="font-size: 2.25rem;">Live Auctions Marketplace</h1>
+          <p style="color: var(--text-muted); font-size: 1rem; margin-top: 0.35rem;">
+            Browse active listings and completed results. Auction and bid data are stored in the BidLive database.
+          </p>
+        </div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--primary);" id="results-count">
+          Loading auctions...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search & Filters Container -->
+  <section style="padding: 2.5rem 0 5rem;">
+    <div class="container">
+      
+      <!-- Filter Bar -->
+      <div class="filter-search-container">
+        <div class="filter-search-grid">
+          <!-- Text Search Bar -->
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" aria-label="Search auctions" placeholder="Search products by name (e.g. iPhone, Sony, Rolex)..." autocomplete="off" />
+          </div>
+
+          <!-- Category Selector -->
+          <div>
+            <select id="category-filter" class="filter-select" aria-label="Filter by Category">
+              <option value="">All Categories</option>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div>
+            <select id="price-filter" class="filter-select" aria-label="Filter by Price">
+              <option value="all">All Prices</option>
+              <option value="under_10k">Under ₹10,000</option>
+              <option value="10k_50k">₹10,000 – ₹50,000</option>
+              <option value="50k_100k">₹50,000 – ₹1,00,000</option>
+              <option value="above_100k">Above ₹1,00,000</option>
+            </select>
+          </div>
+
+          <!-- Auction Status Filter -->
+          <div>
+            <select id="status-filter" class="filter-select" aria-label="Filter by Status">
+              <option value="all">All Statuses</option>
+              <option value="live">Live Bidding Only</option>
+              <option value="ending_soon">Ending Soon (&lt; 2h)</option>
+              <option value="ended">Completed Auctions</option>
+            </select>
+          </div>
+
+          <!-- Sort Filter -->
+          <div>
+            <select id="sort-filter" class="filter-select" aria-label="Sort Auctions">
+              <option value="ending_soon">Ending Soonest</option>
+              <option value="lowest_bid">Lowest Current Bid</option>
+              <option value="highest_bid">Highest Current Bid</option>
+              <option value="most_bids">Most Bids</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Quick Category Filter Pills -->
+        <div class="category-pills" id="category-pills-bar">
+          <!-- Rendered dynamically by js/auctions.js -->
+        </div>
+      </div>
+
+      <!-- Auctions Grid -->
+      <div class="auctions-grid" id="all-auctions-grid">
+        <!-- Rendered dynamically by js/auctions.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon">⚖️</div>
+            <span>BidLive</span>
+          </a>
+          <p>
+            Browse electronics, collectibles, watches, fashion, and other BidLive listings.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="auctions.html">Live Auctions</a></li>
+            <li><a href="create-auction.html">Start Selling</a></li>
+            <li><a href="buyer-dashboard.html">Buyer Dashboard</a></li>
+            <li><a href="seller-dashboard.html">Seller Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="auctions.html?category=Electronics">Electronics</a></li>
+            <li><a href="auctions.html?category=Mobiles">Mobiles</a></li>
+            <li><a href="auctions.html?category=Laptops">Laptops</a></li>
+            <li><a href="auctions.html?category=Watches">Luxury Watches</a></li>
+            <li><a href="auctions.html?category=Collectibles">Collectibles</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Help & Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:support@bidlive.in?subject=BidLive%20Help">Help & Contact</a></li>
+            <li><span class="footer-demo-link">Bidding Rules (demo)</span></li>
+            <li><a href="mailto:support@bidlive.in">support@bidlive.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 BidLive Platform Inc. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js?v=step4"></script>
+  <script src="js/auctions.js"></script>
+</body>
+</html>

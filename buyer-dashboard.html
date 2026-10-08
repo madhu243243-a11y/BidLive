@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buyer Dashboard — BidLive</title>
+  <meta name="description" content="View your active bids, winning items, auction results, and watchlist on BidLive." />
+
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">⚖️</div>
+        <span>BidLive<span class="live-dot"></span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="auctions.html" class="nav-link">Live Auctions</a>
+        <a href="buyer-dashboard.html" class="nav-link active">Buyer Dashboard</a>
+        <a href="create-auction.html" class="nav-link">Sell</a>
+        <a href="index.html#about" class="nav-link">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Rendered dynamically by js/main.js -->
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="register.html" class="btn btn-nav-outline">Register</a>
+        <a href="create-auction.html" class="btn btn-sell">Start Selling</a>
+      </div>
+
+      <button class="hamburger-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="auctions.html" class="nav-link">Live Auctions</a>
+      <a href="buyer-dashboard.html" class="nav-link active">Buyer Dashboard</a>
+      <a href="create-auction.html" class="nav-link">Sell</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <div class="mobile-nav-actions"></div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Bar -->
+  <div style="background: #ffffff; border-bottom: 1px solid var(--border-light); padding: 0.85rem 0;">
+    <div class="container">
+      <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span style="color: var(--text-main); font-weight: 600;">Buyer Dashboard</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buyer Dashboard Section -->
+  <main class="dashboard-section" id="buyer-dashboard-view">
+    <div class="container">
+
+      <!-- Header Row -->
+      <div class="dash-header-row">
+        <div>
+          <span class="section-tag">Buyer Center</span>
+          <h1 style="font-size: 2.25rem; margin-top: 0.35rem;">
+            Hello, <span id="buyer-user-name" style="color: var(--primary);">Rahul Sharma</span> 👋
+          </h1>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+            Track your bids and auction results saved to your BidLive account.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="auctions.html" class="btn btn-primary">
+            ⚡ Explore Live Auctions
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon indigo">🔨</div>
+          <div>
+            <div class="stat-val" id="buyer-stat-active-bids">0</div>
+            <div class="stat-title">Active Bids</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">🏆</div>
+          <div>
+            <div class="stat-val" id="buyer-stat-winning">0</div>
+            <div class="stat-title">Currently Winning</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon amber">📦</div>
+          <div>
+            <div class="stat-val" id="buyer-stat-won">0</div>
+            <div class="stat-title">Auctions Won</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon blue">⭐</div>
+          <div>
+            <div class="stat-val" id="buyer-stat-watching">0</div>
+            <div class="stat-title">Saved Items</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Bids Table Card -->
+      <div class="dash-content-card" style="margin-bottom: 2.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <h3 style="font-size: 1.35rem;">Your Active Bids</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Live status of items you are currently participating in.</p>
+          </div>
+          <a href="auctions.html" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+            + Bid on More Lots
+          </a>
+        </div>
+
+        <div class="dash-table-wrap">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Auction Item</th>
+                <th>Your Bid</th>
+                <th>Current Highest</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="buyer-active-bids-tbody">
+              <!-- Dynamically populated by js/dashboard.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Won Auctions History Card -->
+      <div class="dash-content-card">
+        <div style="margin-bottom: 1.25rem;">
+          <h3 style="font-size: 1.35rem;">Completed & Won Auctions</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Completed auctions where your bid was highest when the auction ended.</p>
+        </div>
+
+        <div class="dash-table-wrap">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Item Name</th>
+                <th>Winning Bid</th>
+                <th>Date Won</th>
+                <th>Auction Result (Demo)</th>
+              </tr>
+            </thead>
+            <tbody id="buyer-won-tbody">
+              <!-- Dynamically populated by js/dashboard.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 BidLive Platform Inc. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="index.html" style="color: var(--nav-muted);">Home</a>
+          <a href="auctions.html" style="color: var(--nav-muted);">Live Auctions</a>
+          <a href="create-auction.html" style="color: var(--nav-muted);">Sell</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js?v=step4"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
